@@ -90,18 +90,25 @@
               message = document.createElement("div");
               message.className = "booking-success-message";
               message.textContent =
-                "Thank you for your booking request! I’ll email you shortly to confirm.";
+                "Thank you for your booking request! I’ll contact you shortly to confirm.";
               message.style.marginTop = "1rem";
               message.style.fontSize = "1.1rem";
-              message.style.fontWeight = "600";
-            }
-
-                       // Put it just after the form
+              message.style.fontWeight = "600"            // Put it just after the form
             form.insertAdjacentElement("afterend", message);
 
             // Clear the fields and hide the form
             form.reset();
             form.style.display = "none";
+            }
+
+                            // Put it just after the form
+            form.insertAdjacentElement("afterend", message);
+
+            // Clear and hide ALL forms on the page (booking + any duplicates)
+            document.querySelectorAll("form").forEach(function (f) {
+              f.reset();
+              f.style.display = "none";
+            });
           })
           .catch(function () {
             alert("Network error. Please email me directly.");
