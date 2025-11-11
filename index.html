@@ -53,9 +53,9 @@
 }
 </script>
     <script type="module" crossorigin src="./assets/index-BKkUQCmr.js"></script>
-  <script>
+ <script>
   (function () {
-    // Your existing Formspree URL:
+    // Use the same Formspree URL that already works for you:
     const FORMSPREE_URL = "https://formspree.io/f/xqawkgkw";
 
     // Hide the old error box and Outlook calendar card
@@ -64,18 +64,16 @@
 
       blocks.forEach(function (el) {
         const text = (el.textContent || "").trim();
-
         if (!text) return;
 
         // Hide the "Something went wrong" error box
-        if (text.includes("Something went wrong.") &&
-            text.includes("Please try again or contact us directly.")) {
+        if (text.includes("Something went wrong") &&
+            text.includes("Please try again")) {
           el.style.display = "none";
         }
 
         // Hide the Outlook calendar block
-        if (text.includes("Connect Your Outlook Calendar") &&
-            text.includes("automatically add bookings to your Outlook calendar")) {
+        if (text.includes("Connect Your Outlook Calendar")) {
           el.style.display = "none";
         }
       });
@@ -123,7 +121,7 @@
               form.reset();
               form.style.display = "none";
 
-              // Also hide the old error + Outlook stuff
+              // Also hide old stuff once more
               hideOldBookingUI();
             } else {
               alert("There was a problem sending your booking. Please email me directly.");
@@ -135,20 +133,15 @@
       });
     }
 
-    // Try immediately in case the form is already there
+    // Run once at start
     hookUpForm();
     hideOldBookingUI();
 
-    // Then keep trying every 500ms until we've successfully attached
-    const interval = setInterval(function () {
+    // Keep running every second so if the old UI appears later, we still kill it
+    setInterval(function () {
       hookUpForm();
       hideOldBookingUI();
-
-      const form = document.querySelector("form");
-      if (form && form.dataset.fsBound === "1") {
-        clearInterval(interval); // we're done
-      }
-    }, 500);
+    }, 1000);
   })();
 </script>
     <link rel="stylesheet" crossorigin href="./assets/index-BRQ1_tX9.css">
