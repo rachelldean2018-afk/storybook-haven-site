@@ -152,58 +152,38 @@
     const FORMSPREE_URL = "https://formspree.io/f/xqawkgkw";
 
     // ✨ Storybook Haven sparkles
-   function showSparkles() {
-  const container = document.createElement("div");
-  container.style.position = "fixed";
-  container.style.left = "0";
-  container.style.top = "0";
-  container.style.width = "100%";
-  container.style.height = "100%";
-  container.style.pointerEvents = "none";
-  container.style.overflow = "hidden";
-  container.style.zIndex = "9999";
-  document.body.appendChild(container);
+    function showSparkles() {
+      const container = document.createElement("div");
+      container.style.position = "fixed";
+      container.style.left = "0";
+      container.style.top = "0";
+      container.style.width = "100%";
+      container.style.height = "100%";
+      container.style.pointerEvents = "none";
+      container.style.overflow = "hidden";
+      container.style.zIndex = "9999";
+      document.body.appendChild(container);
 
-  const sparkleCount = 24;
-  for (let i = 0; i < sparkleCount; i++) {
-    const sparkle = document.createElement("div");
-    sparkle.className = "sparkle";
+      const sparkleCount = 24;
+      for (let i = 0; i < sparkleCount; i++) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
 
-    // Spawn around the centre of the screen (roughly 45–55% area)
-    const offsetX = (Math.random() - 0.5) * 20; // -10 to +10
-    const offsetY = (Math.random() - 0.5) * 16; // -8 to +8
-    sparkle.style.left = 50 + offsetX + "vw";
-    sparkle.style.top = 50 + offsetY + "vh";
+        // Spawn around the center of the screen
+        const offsetX = (Math.random() - 0.5) * 20; // -10 to +10
+        const offsetY = (Math.random() - 0.5) * 16; // -8 to +8
+        sparkle.style.left = 50 + offsetX + "vw";
+        sparkle.style.top = 50 + offsetY + "vh";
 
-    sparkle.style.animationDelay = (Math.random() * 0.8) + "s";
-    container.appendChild(sparkle);
-  }
-    function showThankYouOverlay() {
-      // Don’t create two overlays if something fires twice
-      if (document.querySelector(".storybook-overlay")) return;
+        sparkle.style.animationDelay = (Math.random() * 0.8) + "s";
+        container.appendChild(sparkle);
+      }
 
-      const overlay = document.createElement("div");
-      overlay.className = "storybook-overlay";
-      overlay.innerHTML = `
-        <div class="storybook-overlay-inner">
-          <h2>Your story begins soon ✨</h2>
-          <p>Thank you for your booking request. I’ll email you shortly to confirm all the details.</p>
-          <small>You can safely close this page or keep browsing the site.</small>
-        </div>
-      `;
-      document.body.appendChild(overlay);
-
-      // Remove overlay after a few seconds
+      // Give the slower animation time to finish
       setTimeout(function () {
-        overlay.remove();
-      }, 5000);
+        container.remove();
+      }, 4000);
     }
-
-  // Give the slower animation time to finish
-  setTimeout(function () {
-    container.remove();
-  }, 4000);
-}
 
     function hookUpForm() {
       const form = document.querySelector("form");
@@ -253,7 +233,7 @@
                     ✨ Thank you for your booking request!
                   </p>
                   <p style="margin: 0;">
-                    I’ll contact you shortly to confirm your child’s Storybook Haven session.
+                    We’ll contact you shortly to confirm your child’s Storybook Haven session.
                   </p>
                 </div>
               `;
@@ -262,7 +242,7 @@
             // Put it just after the form
             form.insertAdjacentElement("afterend", message);
 
-                       // Clear and hide ALL forms (in case there’s more than one)
+            // Clear and hide ALL forms (in case there’s more than one)
             document.querySelectorAll("form").forEach(function (f) {
               f.reset();
               f.style.display = "none";
@@ -272,7 +252,26 @@
             showSparkles();
 
             // 🧾 Then fade in the full thank-you scene after a short pause
-            setTimeout(showThankYouOverlay, 2200);
+            setTimeout(function () {
+              // Don't create two overlays if something fires twice
+              if (document.querySelector(".storybook-overlay")) return;
+
+              const overlay = document.createElement("div");
+              overlay.className = "storybook-overlay";
+              overlay.innerHTML = `
+                <div class="storybook-overlay-inner">
+                  <h2>Your story begins soon ✨</h2>
+                  <p>Thank you for your booking request. I’ll email you shortly to confirm all the details.</p>
+                  <small>You can safely close this page or keep browsing the site.</small>
+                </div>
+              `;
+              document.body.appendChild(overlay);
+
+              // Remove overlay after a few seconds
+              setTimeout(function () {
+                overlay.remove();
+              }, 5000);
+            }, 2200);
           })
           .catch(function () {
             alert("Network error. Please email me directly.");
