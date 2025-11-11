@@ -53,9 +53,9 @@
 }
 </script>
     <script type="module" crossorigin src="./assets/index-BKkUQCmr.js"></script>
-    <script>
+   <script>
   (function () {
-    // Put your own Formspree URL here:
+    // Use your existing Formspree URL here:
     const FORMSPREE_URL = "https://formspree.io/f/xqawkgkw";
 
     function hookUpForm() {
@@ -81,8 +81,25 @@
         })
           .then(function (response) {
             if (response.ok) {
-              alert("Thank you! Your booking request has been sent.");
+              // Create a thank-you message element (if it doesn't already exist)
+              let message = document.querySelector(".booking-success-message");
+              if (!message) {
+                message = document.createElement("div");
+                message.className = "booking-success-message";
+                message.textContent =
+                  "Thank you for your booking request! I’ll email you shortly to confirm.";
+                // Simple inline styling so it doesn't look sad
+                message.style.marginTop = "1rem";
+                message.style.fontSize = "1.1rem";
+                message.style.fontWeight = "600";
+              }
+
+              // Insert the message straight after the form
+              form.insertAdjacentElement("afterend", message);
+
+              // Reset and hide the form so it can't be used again
               form.reset();
+              form.style.display = "none";
             } else {
               alert("There was a problem sending your booking. Please email me directly.");
             }
@@ -96,11 +113,11 @@
     // Try immediately in case the form is already there
     hookUpForm();
 
-    // Then keep trying every 500ms until we’ve successfully attached
+    // Then keep trying every 500ms until we've successfully attached
     const interval = setInterval(function () {
       const form = document.querySelector("form");
       if (form && form.dataset.fsBound === "1") {
-        clearInterval(interval); // we’re done
+        clearInterval(interval); // we're done
       } else {
         hookUpForm();
       }
