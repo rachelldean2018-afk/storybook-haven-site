@@ -53,22 +53,21 @@
 }
 </script>
     <script type="module" crossorigin src="./assets/index-BKkUQCmr.js"></script>
- <script>
+<script>
   (function () {
-    // Use your working Formspree URL here:
+    // Put your working Formspree URL here:
     const FORMSPREE_URL = "https://formspree.io/f/xqawkgkw";
 
     function hookUpForm() {
       const form = document.querySelector("form");
 
-      // If there is no form yet, or we've already wired it up, stop
+      // No form yet or already wired
       if (!form || form.dataset.fsBound === "1") return;
 
-      // Mark so we don't attach twice
       form.dataset.fsBound = "1";
 
       form.addEventListener("submit", function (event) {
-        event.preventDefault(); // stop the default browser submit
+        event.preventDefault(); // stop default submit
 
         const formData = new FormData(form);
 
@@ -80,28 +79,28 @@
           }
         })
           .then(function (response) {
-            if (response.ok) {
-              // Create a thank-you message element (if it doesn't already exist)
-              let message = document.querySelector(".booking-success-message");
-              if (!message) {
-                message = document.createElement("div");
-                message.className = "booking-success-message";
-                message.textContent =
-                  "Thank you for your booking request! I’ll contact you shortly to confirm.";
-                message.style.marginTop = "1rem";
-                message.style.fontSize = "1.1rem";
-                message.style.fontWeight = "600";
-              }
-
-              // Insert the message straight after the form
-              form.insertAdjacentElement("afterend", message);
-
-              // Reset and hide the form so it can't be used again
-              form.reset();
-              form.style.display = "none";
-            } else {
+            if (!response.ok) {
               alert("There was a problem sending your booking. Please email me directly.");
+              return;
             }
+
+            // Make / reuse a thank-you message
+            let message = document.querySelector(".booking-success-message");
+            if (!message) {
+              message = document.createElement("div");
+              message.className = "booking-success-message";
+              message.textContent =
+                "Thank you for your booking request! I’ll email you shortly to confirm.";
+              message.style.marginTop = "1rem";
+              message.style.fontSize = "1.1rem";
+              message.style.fontWeight = "600";
+            }
+
+            // Put it just after the form
+            form.insertAdjacentElement("afterend", message);
+
+            // Clear the fields, but DO NOT hide the form for now
+            form.reset();
           })
           .catch(function () {
             alert("Network error. Please email me directly.");
@@ -109,18 +108,9 @@
       });
     }
 
-    // Try immediately
+    // Try immediately and then keep trying every 500ms
     hookUpForm();
-
-    // Then keep trying every 500ms until we've successfully attached
-    const interval = setInterval(function () {
-      const form = document.querySelector("form");
-      if (form && form.dataset.fsBound === "1") {
-        clearInterval(interval); // we're done
-      } else {
-        hookUpForm();
-      }
-    }, 500);
+    setInterval(hookUpForm, 500);
   })();
 </script>
     <link rel="stylesheet" crossorigin href="./assets/index-BRQ1_tX9.css">
