@@ -55,34 +55,13 @@
     <script type="module" crossorigin src="./assets/index-BKkUQCmr.js"></script>
  <script>
   (function () {
-    // Use the same Formspree URL that already works for you:
+    // Use your working Formspree URL here:
     const FORMSPREE_URL = "https://formspree.io/f/xqawkgkw";
-
-    // Hide the old error box and Outlook calendar card
-    function hideOldBookingUI() {
-      const blocks = document.querySelectorAll("div, section");
-
-      blocks.forEach(function (el) {
-        const text = (el.textContent || "").trim();
-        if (!text) return;
-
-        // Hide the "Something went wrong" error box
-        if (text.includes("Something went wrong") &&
-            text.includes("Please try again")) {
-          el.style.display = "none";
-        }
-
-        // Hide the Outlook calendar block
-        if (text.includes("Connect Your Outlook Calendar")) {
-          el.style.display = "none";
-        }
-      });
-    }
 
     function hookUpForm() {
       const form = document.querySelector("form");
 
-      // If there is still no form, or we've already wired it up, stop
+      // If there is no form yet, or we've already wired it up, stop
       if (!form || form.dataset.fsBound === "1") return;
 
       // Mark so we don't attach twice
@@ -108,7 +87,7 @@
                 message = document.createElement("div");
                 message.className = "booking-success-message";
                 message.textContent =
-                  "Thank you for your booking request! I’ll email you shortly to confirm.";
+                  "Thank you for your booking request! I’ll contact you shortly to confirm.";
                 message.style.marginTop = "1rem";
                 message.style.fontSize = "1.1rem";
                 message.style.fontWeight = "600";
@@ -120,9 +99,6 @@
               // Reset and hide the form so it can't be used again
               form.reset();
               form.style.display = "none";
-
-              // Also hide old stuff once more
-              hideOldBookingUI();
             } else {
               alert("There was a problem sending your booking. Please email me directly.");
             }
@@ -133,15 +109,18 @@
       });
     }
 
-    // Run once at start
+    // Try immediately
     hookUpForm();
-    hideOldBookingUI();
 
-    // Keep running every second so if the old UI appears later, we still kill it
-    setInterval(function () {
-      hookUpForm();
-      hideOldBookingUI();
-    }, 1000);
+    // Then keep trying every 500ms until we've successfully attached
+    const interval = setInterval(function () {
+      const form = document.querySelector("form");
+      if (form && form.dataset.fsBound === "1") {
+        clearInterval(interval); // we're done
+      } else {
+        hookUpForm();
+      }
+    }, 500);
   })();
 </script>
     <link rel="stylesheet" crossorigin href="./assets/index-BRQ1_tX9.css">
