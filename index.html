@@ -96,11 +96,12 @@
               message.style.fontWeight = "600";
             }
 
-            // Put it just after the form
+                       // Put it just after the form
             form.insertAdjacentElement("afterend", message);
 
-            // Clear the fields, but DO NOT hide the form for now
+            // Clear the fields and hide the form
             form.reset();
+            form.style.display = "none";
           })
           .catch(function () {
             alert("Network error. Please email me directly.");
