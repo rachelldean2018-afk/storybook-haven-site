@@ -101,6 +101,34 @@
     // 🔹 Use your existing working Formspree URL here:
     const FORMSPREE_URL = "https://formspree.io/f/xqawkgkw";
 
+    // ✨ Storybook Haven sparkles
+    function showSparkles() {
+      const container = document.createElement("div");
+      container.style.position = "fixed";
+      container.style.left = "0";
+      container.style.top = "0";
+      container.style.width = "100%";
+      container.style.height = "100%";
+      container.style.pointerEvents = "none";
+      container.style.overflow = "hidden";
+      container.style.zIndex = "9999";
+      document.body.appendChild(container);
+
+      const sparkleCount = 20;
+      for (let i = 0; i < sparkleCount; i++) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+        sparkle.style.left = Math.random() * 100 + "vw";
+        sparkle.style.top = Math.random() * 100 + "vh";
+        sparkle.style.animationDelay = Math.random() * 1 + "s";
+        container.appendChild(sparkle);
+      }
+
+      setTimeout(function () {
+        container.remove();
+      }, 2500);
+    }
+
     function hookUpForm() {
       const form = document.querySelector("form");
 
@@ -164,8 +192,8 @@
               f.style.display = "none";
             });
 
-           showSparkles();
-
+            // ✨ Let the magic happen
+            showSparkles();
           })
           .catch(function () {
             alert("Network error. Please email me directly.");
@@ -173,38 +201,10 @@
       });
     }
 
-    // Try immediately and then re-try every 500ms until we win
+    // Try immediately and then re-try every 500ms until it attaches
     hookUpForm();
     setInterval(hookUpForm, 500);
   })();
-</script>
-
-   <script>
-  // ✨ Storybook sparkle effect after successful booking
-  function showSparkles() {
-    const sparkleContainer = document.createElement("div");
-    sparkleContainer.style.position = "fixed";
-    sparkleContainer.style.left = 0;
-    sparkleContainer.style.top = 0;
-    sparkleContainer.style.width = "100%";
-    sparkleContainer.style.height = "100%";
-    sparkleContainer.style.pointerEvents = "none";
-    sparkleContainer.style.overflow = "hidden";
-    document.body.appendChild(sparkleContainer);
-
-    const sparkleCount = 20;
-    for (let i = 0; i < sparkleCount; i++) {
-      const sparkle = document.createElement("div");
-      sparkle.classList.add("sparkle");
-      sparkle.style.left = Math.random() * 100 + "vw";
-      sparkle.style.top = Math.random() * 100 + "vh";
-      sparkle.style.animationDelay = Math.random() * 1 + "s";
-      sparkleContainer.appendChild(sparkle);
-    }
-
-    // Remove sparkles after animation
-    setTimeout(() => sparkleContainer.remove(), 2500);
-  }
 </script>
     <link rel="stylesheet" crossorigin href="./assets/index-BRQ1_tX9.css">
   </head>
