@@ -16,30 +16,30 @@
   }
 </style>
 
- <style>
+<style>
   /* ✨ Sparkle animation */
   .sparkle {
     position: absolute;
-    width: 8px;
-    height: 8px;
-    background: radial-gradient(circle, #7dd3fc 0%, #2563eb 70%, transparent 100%);
+    width: 9px;
+    height: 9px;
+    background: radial-gradient(circle, #7dd3fc 0%, #2563eb 60%, transparent 100%);
     border-radius: 50%;
     opacity: 0;
-    animation: sparkleFall 2.5s ease-in-out forwards;
+    animation: sparkleFloat 3.5s ease-out forwards;
   }
 
-  @keyframes sparkleFall {
+  @keyframes sparkleFloat {
     0% {
       opacity: 0;
-      transform: translateY(0) scale(0.8);
+      transform: translateY(10px) scale(0.6);
     }
-    20% {
+    25% {
       opacity: 1;
-      transform: translateY(-10px) scale(1);
+      transform: translateY(0) scale(1);
     }
     100% {
       opacity: 0;
-      transform: translateY(40px) scale(0.3);
+      transform: translateY(-40px) scale(0.5);
     }
   }
 </style>
@@ -102,32 +102,38 @@
     const FORMSPREE_URL = "https://formspree.io/f/xqawkgkw";
 
     // ✨ Storybook Haven sparkles
-    function showSparkles() {
-      const container = document.createElement("div");
-      container.style.position = "fixed";
-      container.style.left = "0";
-      container.style.top = "0";
-      container.style.width = "100%";
-      container.style.height = "100%";
-      container.style.pointerEvents = "none";
-      container.style.overflow = "hidden";
-      container.style.zIndex = "9999";
-      document.body.appendChild(container);
+   function showSparkles() {
+  const container = document.createElement("div");
+  container.style.position = "fixed";
+  container.style.left = "0";
+  container.style.top = "0";
+  container.style.width = "100%";
+  container.style.height = "100%";
+  container.style.pointerEvents = "none";
+  container.style.overflow = "hidden";
+  container.style.zIndex = "9999";
+  document.body.appendChild(container);
 
-      const sparkleCount = 20;
-      for (let i = 0; i < sparkleCount; i++) {
-        const sparkle = document.createElement("div");
-        sparkle.className = "sparkle";
-        sparkle.style.left = Math.random() * 100 + "vw";
-        sparkle.style.top = Math.random() * 100 + "vh";
-        sparkle.style.animationDelay = Math.random() * 1 + "s";
-        container.appendChild(sparkle);
-      }
+  const sparkleCount = 24;
+  for (let i = 0; i < sparkleCount; i++) {
+    const sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
 
-      setTimeout(function () {
-        container.remove();
-      }, 2500);
-    }
+    // Spawn around the centre of the screen (roughly 45–55% area)
+    const offsetX = (Math.random() - 0.5) * 20; // -10 to +10
+    const offsetY = (Math.random() - 0.5) * 16; // -8 to +8
+    sparkle.style.left = 50 + offsetX + "vw";
+    sparkle.style.top = 50 + offsetY + "vh";
+
+    sparkle.style.animationDelay = (Math.random() * 0.8) + "s";
+    container.appendChild(sparkle);
+  }
+
+  // Give the slower animation time to finish
+  setTimeout(function () {
+    container.remove();
+  }, 4000);
+}
 
     function hookUpForm() {
       const form = document.querySelector("form");
