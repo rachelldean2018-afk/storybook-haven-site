@@ -8,6 +8,13 @@
     display: none !important;
   }
 </style>
+
+ <style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
   <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
@@ -97,11 +104,34 @@
             if (!message) {
               message = document.createElement("div");
               message.className = "booking-success-message";
-              message.textContent =
-                "Thank you for your booking request! I’ll contact you shortly to confirm.";
-              message.style.marginTop = "1rem";
-              message.style.fontSize = "1.1rem";
-              message.style.fontWeight = "600"            // Put it just after the form
+              // Create a styled thank-you message element
+let message = document.querySelector(".booking-success-message");
+if (!message) {
+  message = document.createElement("div");
+  message.className = "booking-success-message";
+  message.innerHTML = `
+    <div class="thankyou-box" style="
+      background-color: #e6f4ea;
+      border: 2px solid #34a853;
+      color: #155724;
+      padding: 1.25rem;
+      border-radius: 0.75rem;
+      margin-top: 1.5rem;
+      text-align: center;
+      font-family: system-ui, sans-serif;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      animation: fadeIn 0.8s ease-in-out;
+    ">
+      <p style="font-size: 1.2rem; font-weight: 600; margin: 0;">
+        ✅ Thank you for your booking request!
+      </p>
+      <p style="margin: 0.5rem 0 0;">
+        I’ll email you shortly to confirm.
+      </p>
+    </div>
+  `;
+}
+                         // Put it just after the form
             form.insertAdjacentElement("afterend", message);
 
             // Clear the fields and hide the form
