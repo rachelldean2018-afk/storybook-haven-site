@@ -158,34 +158,6 @@
   ]
 }
 </script>
-
- <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-
-  <div class="text-center mb-12">
-    <h2 class="text-4xl font-extrabold text-slate-900 mb-3">
-      Stories from our families
-    </h2>
-    <p class="text-slate-600 max-w-2xl mx-auto">
-      Heartwarming words from the people who make Storybook Haven come alive.
-    </p>
-  </div>
-
-  <div class="grid gap-10 md:grid-cols-3">
-    
-   <script>
-  // Find the booking form — we detect it by its button text!
-  const bookingButton = [...document.querySelectorAll("button")]
-    .find(btn => btn.textContent.trim() === "Submit Booking");
-
-  if (bookingButton) {
-    const bookingSection = bookingButton.closest("section");
-    if (bookingSection && testimonials) {
-      bookingSection.parentNode.insertBefore(testimonials, bookingSection);
-    }
-  }
-});
-</script>
-
     <script type="module" crossorigin src="./assets/index-BKkUQCmr.js"></script>
 <script>
   (function () {
