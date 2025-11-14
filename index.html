@@ -203,6 +203,22 @@
     </div>
   </div>
 </section>
+   <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const testimonials = document.getElementById("testimonials");
+
+  // Find the booking form — we detect it by its button text!
+  const bookingButton = [...document.querySelectorAll("button")]
+    .find(btn => btn.textContent.trim() === "Submit Booking");
+
+  if (bookingButton) {
+    const bookingSection = bookingButton.closest("section");
+    if (bookingSection && testimonials) {
+      bookingSection.parentNode.insertBefore(testimonials, bookingSection);
+    }
+  }
+});
+</script>
 
     <script type="module" crossorigin src="./assets/index-BKkUQCmr.js"></script>
 <script>
