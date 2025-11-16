@@ -330,16 +330,19 @@ setTimeout(function () {
       bottom.style.flexDirection = "column";
       bottom.style.height = "100%";
 
-      // let the bullet list expand to fill space
+           // let the bullet list expand and spread items nicely
       const list = bottom.querySelector("ul");
       if (list) {
         list.style.flexGrow = "1";
+        list.style.display = "flex";
+        list.style.flexDirection = "column";
+        list.style.justifyContent = "space-between";
       }
 
-      // push the button down
+            // push the button down with a softer gap
       const btn = bottom.querySelector("button.w-full");
       if (btn) {
-        btn.style.marginTop = "1.5rem";
+        btn.style.marginTop = "1rem";
       }
     });
   });
