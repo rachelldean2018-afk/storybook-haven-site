@@ -316,6 +316,34 @@ setTimeout(function () {
     setInterval(hookUpForm, 500);
   })();
 </script>
+
+     // Align service card buttons and balance content
+  document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".bg-white.rounded-2xl.shadow-lg");
+
+    cards.forEach(function (card) {
+      // bottom section: the one with the list + button
+      const bottom = card.querySelector(".p-8:last-of-type");
+      if (!bottom) return;
+
+      bottom.style.display = "flex";
+      bottom.style.flexDirection = "column";
+      bottom.style.height = "100%";
+
+      // let the bullet list expand to fill space
+      const list = bottom.querySelector("ul");
+      if (list) {
+        list.style.flexGrow = "1";
+      }
+
+      // push the button down
+      const btn = bottom.querySelector("button.w-full");
+      if (btn) {
+        btn.style.marginTop = "1.5rem";
+      }
+    });
+  });
+</script>
     <link rel="stylesheet" crossorigin href="./assets/index-BRQ1_tX9.css">
    <style>
   /* Service cards: align "Book a Session" buttons and balance content */
