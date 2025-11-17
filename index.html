@@ -8,6 +8,13 @@
   .bg-blue-50.text-blue-800 {
     display: none !important;
   }
+<style>
+/* Hide the old error message box */
+.bg-red-50.text-red-800,
+/* Hide the Outlook calendar card */
+.bg-blue-50.text-blue-800 {
+display: none !important;
+}
 </style>
 
  <style>
@@ -15,6 +22,11 @@
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
+<style>
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
+}
 </style>
 
 <style>
@@ -43,6 +55,31 @@
       transform: translateY(-40px) scale(0.5);
     }
   }
+/* ✨ Sparkle animation */
+.sparkle {
+position: absolute;
+width: 9px;
+height: 9px;
+background: radial-gradient(circle, #7dd3fc 0%, #2563eb 60%, transparent 100%);
+border-radius: 50%;
+opacity: 0;
+animation: sparkleFloat 3.5s ease-out forwards;
+}
+
+@keyframes sparkleFloat {
+0% {
+opacity: 0;
+transform: translateY(10px) scale(0.6);
+}
+25% {
+opacity: 1;
+transform: translateY(0) scale(1);
+}
+100% {
+opacity: 0;
+transform: translateY(-40px) scale(0.5);
+}
+}
 </style>
 
  <style>
@@ -93,8 +130,57 @@
     from { opacity: 0; }
     to { opacity: 1; }
   }
+<style>
+/* Full-screen story overlay after booking */
+.storybook-overlay {
+position: fixed;
+inset: 0;
+background: rgba(15, 23, 42, 0.78); /* soft dark veil */
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 10000;
+animation: overlayFadeIn 0.8s ease-out forwards;
+}
+
+.storybook-overlay-inner {
+background: #fdf7ee;
+border-radius: 1.2rem;
+padding: 2rem 2.5rem;
+max-width: 420px;
+margin: 0 1.5rem;
+text-align: center;
+box-shadow: 0 18px 45px rgba(15, 23, 42, 0.25);
+border: 2px solid #2563eb;
+color: #1f2937;
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.storybook-overlay-inner h2 {
+margin: 0 0 0.75rem;
+font-size: 1.5rem;
+font-weight: 700;
+}
+
+.storybook-overlay-inner p {
+margin: 0 0 0.5rem;
+font-size: 1rem;
+}
+
+.storybook-overlay-inner small {
+display: block;
+margin-top: 0.5rem;
+font-size: 0.85rem;
+opacity: 0.8;
+}
+
+@keyframes overlayFadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
 </style>
   <head>
+<head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
 <script>
@@ -102,6 +188,10 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-Z5Z67SFPG3');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-Z5Z67SFPG3');
 </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="./favicon.png?v=2" />
@@ -120,6 +210,23 @@
     <meta name="twitter:title" content="The Storybook Haven — English Storytelling at Home" />
     <meta name="twitter:description" content="Imaginative, at-home English storytelling sessions for children in Flanders." />
     <meta name="twitter:image" content="https://www.thestorybookhaven.be/social-preview.png" />
+<meta charset="UTF-8" />
+<link rel="icon" type="image/png" href="./favicon.png?v=2" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Storybook Haven — In-Home English Storytelling for Children</title>
+<meta name="description" content="Storybook Haven brings imaginative, at-home English storytelling sessions that build language, joy, and confidence for children in Flanders." />
+<link rel="canonical" href="https://www.thestorybookhaven.be/" />
+<meta name="robots" content="index, follow" />
+<meta property="og:locale" content="en_GB" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.thestorybookhaven.be/" />
+<meta property="og:title" content="The Storybook Haven — English Storytelling at Home" />
+<meta property="og:description" content="Interactive, at-home English storytelling sessions that nurture imagination and language skills for children in Flanders." />
+<meta property="og:image" content="https://www.thestorybookhaven.be/social-preview.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Storybook Haven — English Storytelling at Home" />
+<meta name="twitter:description" content="Imaginative, at-home English storytelling sessions for children in Flanders." />
+<meta name="twitter:image" content="https://www.thestorybookhaven.be/social-preview.png" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -144,9 +251,32 @@
   "email": "info@thestorybookhaven.be",   
   "sameAs": [
   ]
+"@context": "https://schema.org",
+"@type": "LocalBusiness",
+"name": "The Storybook Haven",
+"url": "https://www.thestorybookhaven.be/",
+"description": "Imaginative, at-home English storytelling sessions that build language, joy, and confidence for children in Flanders.",
+"image": "https://www.thestorybookhaven.be/social-preview.png",
+"logo": "https://www.thestorybookhaven.be/favicon.png",
+"address": {
+"@type": "PostalAddress",
+"addressLocality": "Tienen",
+"addressRegion": "Flanders",
+"addressCountry": "BE"
+},
+"areaServed": {
+"@type": "AdministrativeArea",
+"name": "Flanders"
+},
+"openingHours": "By appointment",
+"priceRange": "€€",
+"email": "info@thestorybookhaven.be",   
+"sameAs": [
+]
 }
 </script>
     <script type="module" crossorigin src="./assets/index-BKkUQCmr.js"></script>
+<script type="module" crossorigin src="./assets/index-BKkUQCmr.js"></script>
 <script>
   (function () {
     // 🔹 Use your existing working Formspree URL here:
@@ -253,6 +383,158 @@
             showSparkles();
 
             // 🧾 Then fade in the full thank-you scene after a short pause
+(function () {
+// 🔹 Use your existing working Formspree URL here:
+const FORMSPREE_URL = "https://formspree.io/f/xqawkgkw";
+
+// ✨ Storybook Haven sparkles
+function showSparkles() {
+const container = document.createElement("div");
+container.style.position = "fixed";
+container.style.left = "0";
+container.style.top = "0";
+container.style.width = "100%";
+container.style.height = "100%";
+container.style.pointerEvents = "none";
+container.style.overflow = "hidden";
+container.style.zIndex = "9999";
+document.body.appendChild(container);
+
+const sparkleCount = 24;
+for (let i = 0; i < sparkleCount; i++) {
+const sparkle = document.createElement("div");
+sparkle.className = "sparkle";
+
+// Spawn around the center of the screen
+const offsetX = (Math.random() - 0.5) * 20; // -10 to +10
+const offsetY = (Math.random() - 0.5) * 16; // -8 to +8
+sparkle.style.left = 50 + offsetX + "vw";
+sparkle.style.top = 50 + offsetY + "vh";
+
+sparkle.style.animationDelay = (Math.random() * 0.8) + "s";
+container.appendChild(sparkle);
+}
+
+// Give the slower animation time to finish
+setTimeout(function () {
+container.remove();
+}, 4000);
+}
+
+function hookUpForm() {
+const form = document.querySelector("form");
+
+// No form yet or already wired
+if (!form || form.dataset.fsBound === "1") return;
+
+form.dataset.fsBound = "1";
+
+form.addEventListener("submit", function (event) {
+event.preventDefault(); // stop default submit
+
+const formData = new FormData(form);
+
+fetch(FORMSPREE_URL, {
+method: "POST",
+body: formData,
+headers: {
+Accept: "application/json",
+},
+})
+.then(function (response) {
+if (!response.ok) {
+alert("There was a problem sending your booking. Please email me directly.");
+return;
+}
+
+// 🔹 Create / reuse a branded thank-you card
+let message = document.querySelector(".booking-success-message");
+if (!message) {
+message = document.createElement("div");
+message.className = "booking-success-message";
+message.innerHTML = `
+               <div style="
+                 background-color: #fdf7ee;
+                 border: 2px solid #2563eb;
+                 color: #1d4ed8;
+                 padding: 1.5rem;
+                 border-radius: 0.9rem;
+                 margin-top: 1.75rem;
+                 text-align: center;
+                 font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                 box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+                 animation: fadeIn 0.6s ease-out;
+               ">
+                 <p style="font-size: 1.25rem; font-weight: 700; margin: 0 0 0.5rem;">
+                   ✨ Thank you for your booking request!
+                 </p>
+                 <p style="margin: 0;">
+                   We’ll contact you shortly to confirm your child’s Storybook Haven session.
+                 </p>
+               </div>
+             `;
+}
+
+// Put it just after the form
+form.insertAdjacentElement("afterend", message);
+
+// Clear and hide ALL forms (in case there’s more than one)
+document.querySelectorAll("form").forEach(function (f) {
+f.reset();
+f.style.display = "none";
+});
+
+// ✨ Let the magic happen
+showSparkles();
+
+// 🧾 Then fade in the full thank-you scene after a short pause
+setTimeout(function () {
+// Don't create two overlays if something fires twice
+if (document.querySelector(".storybook-overlay-inline")) return;
+
+// Full-screen dark veil
+const overlay = document.createElement("div");
+overlay.className = "storybook-overlay-inline";
+overlay.style.position = "fixed";
+overlay.style.left = "0";
+overlay.style.top = "0";
+overlay.style.width = "100%";
+overlay.style.height = "100%";
+overlay.style.background = "rgba(15, 23, 42, 0.78)";
+overlay.style.display = "flex";
+overlay.style.alignItems = "center";
+overlay.style.justifyContent = "center";
+overlay.style.zIndex = "10000";
+
+// Inner cream box
+const box = document.createElement("div");
+box.style.background = "#fdf7ee";
+box.style.borderRadius = "1.2rem";
+box.style.padding = "2rem 2.5rem";
+box.style.maxWidth = "420px";
+box.style.margin = "0 1.5rem";
+box.style.textAlign = "center";
+box.style.boxShadow = "0 18px 45px rgba(15, 23, 42, 0.25)";
+box.style.border = "2px solid #2563eb";
+box.style.color = "#1f2937";
+box.style.fontFamily = "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+
+box.innerHTML = `
+   <h2 style="margin: 0 0 0.75rem; font-size: 1.5rem; font-weight: 700;">
+     Your story begins soon ✨
+   </h2>
+   <p style="margin: 0 0 0.5rem; font-size: 1rem;">
+     Thank you for your booking request. I’ll email you shortly to confirm all the details.
+   </p>
+   <small style="display:block; margin-top:0.5rem; font-size:0.85rem; opacity:0.8;">
+     You can safely close this page or keep browsing the site.
+   </small>
+ `;
+
+overlay.appendChild(box);
+document.body.appendChild(overlay);
+
+// Remove overlay after a few seconds
 setTimeout(function () {
   // Don't create two overlays if something fires twice
   if (document.querySelector(".storybook-overlay-inline")) return;
@@ -303,6 +585,8 @@ setTimeout(function () {
   setTimeout(function () {
     overlay.remove();
   }, 5000);
+overlay.remove();
+}, 5000);
 }, 2200);
           })
           .catch(function () {
@@ -315,56 +599,85 @@ setTimeout(function () {
     hookUpForm();
     setInterval(hookUpForm, 500);
   })();
-</script>
-
-   
-  // Align service card buttons and balance content
-  document.addEventListener("DOMContentLoaded", function () {
-    const cards = document.querySelectorAll(".bg-white.rounded-2xl.shadow-lg");
-
-    cards.forEach(function (card) {
-      // bottom section: the one with the list + button
-      const bottom = card.querySelector(".p-8:last-of-type");
-      if (!bottom) return;
-
-      bottom.style.display = "flex";
-      bottom.style.flexDirection = "column";
-      bottom.style.height = "100%";
-
-     
-
-      // push the button down with a softer gap
-      const btn = bottom.querySelector("button.w-full");
-      if (btn) {
-        btn.style.marginTop = "1rem";
-      }
-    });
-  });
-</script> 
+ </script>
     <link rel="stylesheet" crossorigin href="./assets/index-BRQ1_tX9.css">
    <style>
   /* Service cards: align "Book a Session" buttons and balance content */
   .bg-white.rounded-2xl.shadow-lg {
     display: flex;
     flex-direction: column;
-    height:// let the bullet list expand and spread items nicely
+})
+.catch(function () {
+alert("Network error. Please email me directly.");
+});
+});
+}
+
+// Try immediately and then re-try every 500ms until it attaches
+hookUpForm();
+setInterval(hookUpForm, 500);
+})();
+</script>
+
+
+// Align service card buttons and balance content
+document.addEventListener("DOMContentLoaded", function () {
+const cards = document.querySelectorAll(".bg-white.rounded-2xl.shadow-lg");
+
+cards.forEach(function (card) {
+// bottom section: the one with the list + button
+const bottom = card.querySelector(".p-8:last-of-type");
+if (!bottom) return;
+
+bottom.style.display = "flex";
+bottom.style.flexDirection = "column";
+bottom.style.height = "100%";
+
+     // let the bullet list expand and spread items nicely
 const list = bottom.querySelector("ul");
 if (list) {
   list.style.flexGrow = "1";
   list.style.display = "flex";
   list.style.flexDirection = "column";
 
-  const isBlue = card.querySelector(".text-blue-600") !== null;
+  // If this is the BLUE card, use softer spacing
+         const isBlue = card.querySelector(".text-blue-600") !== null;
 
-  if (isBlue) {
-    // BLUE card: more open, stretched spacing
-    list.style.justifyContent = "space-between";
-    list.style.gap = "2.4rem";
-  } else {
-    // PURPLE card: keep a comfortable, slightly tighter rhythm
-    list.style.justifyContent = "space-between";
-    list.style.gap = "1.4rem";
+        if (isBlue) {
+          // BLUE card: softer, more open spacing
+          list.style.justifyContent = "space-evenly";
+          list.style.gap = "1.75rem";
+        } else {
+          // PURPLE card: keep slightly tighter spacing
+          list.style.justifyContent = "space-between";
+          list.style.gap = "1.25rem";
+        }
+     
+
+// push the button down with a softer gap
+const btn = bottom.querySelector("button.w-full");
+if (btn) {
+btn.style.marginTop = "1rem";
+}
+});
+});
+</script> 
+<link rel="stylesheet" crossorigin href="./assets/index-BRQ1_tX9.css">
+<style>
+/* Service cards: align "Book a Session" buttons and balance content */
+.bg-white.rounded-2xl.shadow-lg {
+display: flex;
+flex-direction: column;
+    height: 100%;
+height:// let the bullet list expand and spread items nicely
+const list = bottom.querySelector("ul");
+if (list) {
+@@ -339,103 +384,28 @@ <h2 style="margin: 0 0 0.75rem; font-size: 1.5rem; font-weight: 700;">
+   // PURPLE card: keep a comfortable, slightly tighter rhythm
+   list.style.justifyContent = "space-between";
+   list.style.gap = "1.4rem";
   }
+}
 }
 
   /* Bottom section inside each card (list + button) */
@@ -400,14 +713,85 @@ if (list) {
           list.style.gap = "1.8rem";
         }
       }
+/* Bottom section inside each card (list + button) */
+.bg-white.rounded-2xl.shadow-lg .p-8:last-of-type {
+display: flex;
+flex-direction: column;
+height: 100%;
+}
 
   /* Push the button to the bottom and keep a nice gap */
   .bg-white.rounded-2xl.shadow-lg .p-8:last-of-type > button.w-full {
     margin-top: 1.5rem;
   }
+<style>
+  /* Make the service cards behave like equal-height columns */
+  .bg-white.rounded-2xl.shadow-lg {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  /* Bottom area in each card (list + button) */
+  .bg-white.rounded-2xl.shadow-lg .p-8:last-of-type {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  /* Let the list fill space and spread items */
+  .bg-white.rounded-2xl.shadow-lg .p-8:last-of-type ul {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Pin the button to the bottom */
+  .bg-white.rounded-2xl.shadow-lg .p-8:last-of-type > button.w-full {
+    margin-top: auto;
+  }
+</style>
+/* Let the bullet list grow to fill space */
+.bg-white.rounded-2xl.shadow-lg .p-8:last-of-type > ul {
+flex-grow: 1;
+}
+
+ <style>
+  /* Force service cards to align their buttons at the bottom */
+  .bg-white.rounded-2xl.shadow-lg {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+  }
+
+  /* Bottom section in each card: the list + button area */
+  .bg-white.rounded-2xl.shadow-lg .p-8:last-of-type {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+  }
+
+  /* Let the list fill space */
+  .bg-white.rounded-2xl.shadow-lg .p-8:last-of-type ul {
+    flex-grow: 1 !important;
+  }
+
+  /* Pin the button to the bottom */
+  .bg-white.rounded-2xl.shadow-lg .p-8:last-of-type > button.w-full {
+    margin-top: auto !important;
+  }
+/* Push the button to the bottom and keep a nice gap */
+.bg-white.rounded-2xl.shadow-lg .p-8:last-of-type > button.w-full {
+margin-top: 1.5rem;
+}
 </style>
   </head>
   <body>
     <div id="root"></div>
   </body>
+</head>
+<body>
+<div id="root"></div>
+</body>
 </html>
