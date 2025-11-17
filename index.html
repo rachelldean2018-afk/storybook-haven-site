@@ -331,25 +331,7 @@ setTimeout(function () {
       bottom.style.flexDirection = "column";
       bottom.style.height = "100%";
 
-     // let the bullet list expand and spread items nicely
-const list = bottom.querySelector("ul");
-if (list) {
-  list.style.flexGrow = "1";
-  list.style.display = "flex";
-  list.style.flexDirection = "column";
-
-  // If this is the BLUE card, use softer spacing
-         const isBlue = card.querySelector(".text-blue-600") !== null;
-
-        if (isBlue) {
-          // BLUE card: softer, more open spacing
-          list.style.justifyContent = "space-evenly";
-          list.style.gap = "1.75rem";
-        } else {
-          // PURPLE card: keep slightly tighter spacing
-          list.style.justifyContent = "space-between";
-          list.style.gap = "1.25rem";
-        }
+     
 
       // push the button down with a softer gap
       const btn = bottom.querySelector("button.w-full");
@@ -365,8 +347,25 @@ if (list) {
   .bg-white.rounded-2xl.shadow-lg {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height:// let the bullet list expand and spread items nicely
+const list = bottom.querySelector("ul");
+if (list) {
+  list.style.flexGrow = "1";
+  list.style.display = "flex";
+  list.style.flexDirection = "column";
+
+  const isBlue = card.querySelector(".text-blue-600") !== null;
+
+  if (isBlue) {
+    // BLUE card: more open, stretched spacing
+    list.style.justifyContent = "space-between";
+    list.style.gap = "2.4rem";
+  } else {
+    // PURPLE card: keep a comfortable, slightly tighter rhythm
+    list.style.justifyContent = "space-between";
+    list.style.gap = "1.4rem";
   }
+}
 
   /* Bottom section inside each card (list + button) */
   .bg-white.rounded-2xl.shadow-lg .p-8:last-of-type {
