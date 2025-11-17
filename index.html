@@ -315,56 +315,6 @@ setTimeout(function () {
     hookUpForm();
     setInterval(hookUpForm, 500);
   })();
- 
-<script>
-  // Align service card buttons and balance content
-  document.addEventListener("DOMContentLoaded", function () {
-    const cards = document.querySelectorAll(".bg-white.rounded-2xl.shadow-lg");
-
-    cards.forEach(function (card) {
-      // bottom section: the one with the list + button
-      const bottom = card.querySelector(".p-8:last-of-type");
-      if (!bottom) return;
-
-      bottom.style.display = "flex";
-      bottom.style.flexDirection = "column";
-      bottom.style.height = "100%";
-
-      // let the bullet list expand and spread items nicely
-      const list = bottom.querySelector("ul");
-      if (list) {
-        list.style.flexGrow = "1";
-        list.style.display = "flex";
-        list.style.flexDirection = "column";
-
-        // remove Tailwind's default space-y-* margins so our gaps are in control
-        const items = list.querySelectorAll("li");
-        items.forEach(function (li) {
-          li.style.marginTop = "0";
-          li.style.marginBottom = "0";
-        });
-
-        const isBlue = card.querySelector(".text-blue-600") !== null;
-
-        if (isBlue) {
-          // BLUE card: more open spacing
-          list.style.justifyContent = "space-between";
-          list.style.gap = "2.6rem";
-        } else {
-          // PURPLE card: slightly tighter, still airy
-          list.style.justifyContent = "space-between";
-          list.style.gap = "1.8rem";
-        }
-      }
-
-      // push the button all the way to the bottom of the card
-      const btn = bottom.querySelector("button.w-full");
-      if (btn) {
-        btn.style.marginTop = "auto";
-      }
-    });
-  });
-</script>
     <link rel="stylesheet" crossorigin href="./assets/index-BRQ1_tX9.css">
    <style>
   /* Service cards: align "Book a Session" buttons and balance content */
@@ -428,6 +378,33 @@ if (list) {
   /* Push the button to the bottom and keep a nice gap */
   .bg-white.rounded-2xl.shadow-lg .p-8:last-of-type > button.w-full {
     margin-top: 1.5rem;
+  }
+<style>
+  /* Make the service cards behave like equal-height columns */
+  .bg-white.rounded-2xl.shadow-lg {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  /* Bottom area in each card (list + button) */
+  .bg-white.rounded-2xl.shadow-lg .p-8:last-of-type {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  /* Let the list fill space and spread items */
+  .bg-white.rounded-2xl.shadow-lg .p-8:last-of-type ul {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Pin the button to the bottom */
+  .bg-white.rounded-2xl.shadow-lg .p-8:last-of-type > button.w-full {
+    margin-top: auto;
   }
 </style>
   </head>
