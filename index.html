@@ -339,16 +339,17 @@ if (list) {
   list.style.flexDirection = "column";
 
   // If this is the BLUE card, use softer spacing
-  const isBlue = card.querySelector(".text-blue-600") !== null;
+         const isBlue = card.querySelector(".text-blue-600") !== null;
 
-  if (isBlue) {
-    // gentler spacing for blue card
-    list.style.justifyContent = "space-evenly";
-  } else {
-    // keep strong spacing for purple card
-    list.style.justifyContent = "space-between";
-  }
-}
+        if (isBlue) {
+          // BLUE card: softer, more open spacing
+          list.style.justifyContent = "space-evenly";
+          list.style.gap = "1.75rem";
+        } else {
+          // PURPLE card: keep slightly tighter spacing
+          list.style.justifyContent = "space-between";
+          list.style.gap = "1.25rem";
+        }
 
       // push the button down with a softer gap
       const btn = bottom.querySelector("button.w-full");
