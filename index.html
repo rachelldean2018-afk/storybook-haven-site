@@ -331,14 +331,24 @@ setTimeout(function () {
       bottom.style.flexDirection = "column";
       bottom.style.height = "100%";
 
-      // let the bullet list expand and spread items nicely
-      const list = bottom.querySelector("ul");
-      if (list) {
-        list.style.flexGrow = "1";
-        list.style.display = "flex";
-        list.style.flexDirection = "column";
-        list.style.justifyContent = "space-between";
-      }
+     // let the bullet list expand and spread items nicely
+const list = bottom.querySelector("ul");
+if (list) {
+  list.style.flexGrow = "1";
+  list.style.display = "flex";
+  list.style.flexDirection = "column";
+
+  // If this is the BLUE card, use softer spacing
+  const isBlue = card.querySelector(".text-blue-600") !== null;
+
+  if (isBlue) {
+    // gentler spacing for blue card
+    list.style.justifyContent = "space-evenly";
+  } else {
+    // keep strong spacing for purple card
+    list.style.justifyContent = "space-between";
+  }
+}
 
       // push the button down with a softer gap
       const btn = bottom.querySelector("button.w-full");
