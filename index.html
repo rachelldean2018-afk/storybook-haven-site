@@ -333,10 +333,13 @@
           bottom.style.flexDirection = "column";
           bottom.style.height = "100%";
 
-          const btn = bottom.querySelector("button.w-full");
-          if (btn) {
-            btn.style.marginTop = "1rem";
-          }
+         const btn = bottom.querySelector("button.w-full");
+if (btn) {
+  const wrapper = btn.parentElement;
+  if (wrapper) {
+    wrapper.style.marginTop = "auto";
+  }
+}
 
           const list = bottom.querySelector("ul");
           if (list) {
