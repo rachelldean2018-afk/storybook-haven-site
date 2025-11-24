@@ -1,391 +1,59 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-Z5Z67SFPG3');
-    </script>
-
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Z5Z67SFPG3');
+</script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="./favicon.png?v=2" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Storybook Haven — In-Home English Storytelling for Children</title>
-    <meta
-      name="description"
-      content="Storybook Haven brings imaginative, at-home English storytelling sessions that build language, joy, and confidence for children in Flanders."
-    />
+    <meta name="description" content="Storybook Haven brings imaginative, at-home English storytelling sessions that build language, joy, and confidence for children in Flanders." />
     <link rel="canonical" href="https://www.thestorybookhaven.be/" />
     <meta name="robots" content="index, follow" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.thestorybookhaven.be/" />
     <meta property="og:title" content="The Storybook Haven — English Storytelling at Home" />
-    <meta
-      property="og:description"
-      content="Interactive, at-home English storytelling sessions that nurture imagination and language skills for children in Flanders."
-    />
+    <meta property="og:description" content="Interactive, at-home English storytelling sessions that nurture imagination and language skills for children in Flanders." />
     <meta property="og:image" content="https://www.thestorybookhaven.be/social-preview.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="The Storybook Haven — English Storytelling at Home" />
-    <meta
-      name="twitter:description"
-      content="Imaginative, at-home English storytelling sessions for children in Flanders."
-    />
+    <meta name="twitter:description" content="Imaginative, at-home English storytelling sessions for children in Flanders." />
     <meta name="twitter:image" content="https://www.thestorybookhaven.be/social-preview.png" />
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "The Storybook Haven",
-      "url": "https://www.thestorybookhaven.be/",
-      "description": "Imaginative, at-home English storytelling sessions that build language, joy, and confidence for children in Flanders.",
-      "image": "https://www.thestorybookhaven.be/social-preview.png",
-      "logo": "https://www.thestorybookhaven.be/favicon.png",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Tienen",
-        "addressRegion": "Flanders",
-        "addressCountry": "BE"
-      },
-      "areaServed": {
-        "@type": "AdministrativeArea",
-        "name": "Flanders"
-      },
-      "openingHours": "By appointment",
-      "priceRange": "€€",
-      "email": "info@thestorybookhaven.be",
-      "sameAs": []
-    }
-    </script>
-
-    <!-- 🔹 GLOBAL SMALL STYLES -->
-
-    <style>
-      /* Hide the old error message box */
-      .bg-red-50.text-red-800,
-      /* Hide the Outlook calendar card */
-      .bg-blue-50.text-blue-800 {
-        display: none !important;
-      }
-    </style>
-
-    <style>
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-    </style>
-
-    <style>
-      /* ✨ Sparkle animation */
-      .sparkle {
-        position: absolute;
-        width: 9px;
-        height: 9px;
-        background: radial-gradient(circle, #7dd3fc 0%, #2563eb 60%, transparent 100%);
-        border-radius: 50%;
-        opacity: 0;
-        animation: sparkleFloat 3.5s ease-out forwards;
-      }
-
-      @keyframes sparkleFloat {
-        0% {
-          opacity: 0;
-          transform: translateY(10px) scale(0.6);
-        }
-        25% {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-        }
-        100% {
-          opacity: 0;
-          transform: translateY(-40px) scale(0.5);
-        }
-      }
-    </style>
-
-    <style>
-      /* Full-screen story overlay after booking */
-      .storybook-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(15, 23, 42, 0.78);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10000;
-        animation: overlayFadeIn 0.8s ease-out forwards;
-      }
-
-      .storybook-overlay-inner {
-        background: #fdf7ee;
-        border-radius: 1.2rem;
-        padding: 2rem 2.5rem;
-        max-width: 420px;
-        margin: 0 1.5rem;
-        text-align: center;
-        box-shadow: 0 18px 45px rgba(15, 23, 42, 0.25);
-        border: 2px solid #2563eb;
-        color: #1f2937;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      }
-
-      .storybook-overlay-inner h2 {
-        margin: 0 0 0.75rem;
-        font-size: 1.5rem;
-        font-weight: 700;
-      }
-
-      .storybook-overlay-inner p {
-        margin: 0 0 0.5rem;
-        font-size: 1rem;
-      }
-
-      .storybook-overlay-inner small {
-        display: block;
-        margin-top: 0.5rem;
-        font-size: 0.85rem;
-        opacity: 0.8;
-      }
-
-      @keyframes overlayFadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-    </style>
-
-    <!-- 🔹 MAIN JS BUNDLE (React app) -->
-    <script type="module" crossorigin src="./assets/index-BKkUQCmr.js"></script>
-
-    <!-- 🔹 MAIN CSS BUNDLE (Tailwind/App styles) -->
-    <link rel="stylesheet" crossorigin href="./assets/index-BRQ1_tX9.css" />
-
-    <!-- 🔹 FORMSPREE + SPARKLES SCRIPT -->
-    <script>
-      (function () {
-        const FORMSPREE_URL = "https://formspree.io/f/xqawkgkw";
-
-        function showSparkles() {
-          const container = document.createElement("div");
-          container.style.position = "fixed";
-          container.style.left = "0";
-          container.style.top = "0";
-          container.style.width = "100%";
-          container.style.height = "100%";
-          container.style.pointerEvents = "none";
-          container.style.overflow = "hidden";
-          container.style.zIndex = "9999";
-          document.body.appendChild(container);
-
-          const sparkleCount = 24;
-          for (let i = 0; i < sparkleCount; i++) {
-            const sparkle = document.createElement("div");
-            sparkle.className = "sparkle";
-
-            const offsetX = (Math.random() - 0.5) * 20;
-            const offsetY = (Math.random() - 0.5) * 16;
-            sparkle.style.left = 50 + offsetX + "vw";
-            sparkle.style.top = 50 + offsetY + "vh";
-
-            sparkle.style.animationDelay = (Math.random() * 0.8) + "s";
-            container.appendChild(sparkle);
-          }
-
-          setTimeout(function () {
-            container.remove();
-          }, 4000);
-        }
-
-        function hookUpForm() {
-          const form = document.querySelector("form");
-          if (!form || form.dataset.fsBound === "1") return;
-
-          form.dataset.fsBound = "1";
-
-          form.addEventListener("submit", function (event) {
-            event.preventDefault();
-
-            const formData = new FormData(form);
-
-            fetch(FORMSPREE_URL, {
-              method: "POST",
-              body: formData,
-              headers: {
-                Accept: "application/json",
-              },
-            })
-              .then(function (response) {
-                if (!response.ok) {
-                  alert("There was a problem sending your booking. Please email me directly.");
-                  return;
-                }
-
-                let message = document.querySelector(".booking-success-message");
-                if (!message) {
-                  message = document.createElement("div");
-                  message.className = "booking-success-message";
-                  message.innerHTML = `
-                    <div style="
-                      background-color: #fdf7ee;
-                      border: 2px solid #2563eb;
-                      color: #1d4ed8;
-                      padding: 1.5rem;
-                      border-radius: 0.9rem;
-                      margin-top: 1.75rem;
-                      text-align: center;
-                      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-                      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-                      animation: fadeIn 0.6s ease-out;
-                    ">
-                      <p style="font-size: 1.25rem; font-weight: 700; margin: 0 0 0.5rem;">
-                        ✨ Thank you for your booking request!
-                      </p>
-                      <p style="margin: 0;">
-                        We’ll contact you shortly to confirm your child’s Storybook Haven session.
-                      </p>
-                    </div>
-                  `;
-                }
-
-                form.insertAdjacentElement("afterend", message);
-
-                document.querySelectorAll("form").forEach(function (f) {
-                  f.reset();
-                  f.style.display = "none";
-                });
-
-                showSparkles();
-
-                setTimeout(function () {
-                  if (document.querySelector(".storybook-overlay-inline")) return;
-
-                  const overlay = document.createElement("div");
-                  overlay.className = "storybook-overlay-inline";
-                  overlay.style.position = "fixed";
-                  overlay.style.left = "0";
-                  overlay.style.top = "0";
-                  overlay.style.width = "100%";
-                  overlay.style.height = "100%";
-                  overlay.style.background = "rgba(15, 23, 42, 0.78)";
-                  overlay.style.display = "flex";
-                  overlay.style.alignItems = "center";
-                  overlay.style.justifyContent = "center";
-                  overlay.style.zIndex = "10000";
-
-                  const box = document.createElement("div");
-                  box.style.background = "#fdf7ee";
-                  box.style.borderRadius = "1.2rem";
-                  box.style.padding = "2rem 2.5rem";
-                  box.style.maxWidth = "420px";
-                  box.style.margin = "0 1.5rem";
-                  box.style.textAlign = "center";
-                  box.style.boxShadow = "0 18px 45px rgba(15, 23, 42, 0.25)";
-                  box.style.border = "2px solid #2563eb";
-                  box.style.color = "#1f2937";
-                  box.style.fontFamily = "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-
-                  box.innerHTML = `
-                    <h2 style="margin: 0 0 0.75rem; font-size: 1.5rem; font-weight: 700;">
-                      Your story begins soon ✨
-                    </h2>
-                    <p style="margin: 0 0 0.5rem; font-size: 1rem;">
-                      Thank you for your booking request. I’ll email you shortly to confirm all the details.
-                    </p>
-                    <small style="display:block; margin-top:0.5rem; font-size:0.85rem; opacity:0.8;">
-                      You can safely close this page or keep browsing the site.
-                    </small>
-                  `;
-
-                  overlay.appendChild(box);
-                  document.body.appendChild(overlay);
-
-                  setTimeout(function () {
-                    overlay.remove();
-                  }, 5000);
-                }, 2200);
-              })
-              .catch(function () {
-                alert("Network error. Please email me directly.");
-              });
-          });
-        }
-
-        hookUpForm();
-        setInterval(hookUpForm, 500);
-      })();
-    </script>
-
-    <!-- 🔹 SERVICE CARD ALIGNMENT JS -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const cards = document.querySelectorAll(".bg-white.rounded-2xl.shadow-lg");
-
-        cards.forEach(function (card) {
-          const bottom = card.querySelector(".p-8:last-of-type");
-          if (!bottom) return;
-
-          bottom.style.display = "flex";
-          bottom.style.flexDirection = "column";
-          bottom.style.height = "100%";
-
-         const btn = bottom.querySelector("button.w-full");
-if (btn) {
-  const wrapper = btn.parentElement;
-  if (wrapper) {
-    wrapper.style.marginTop = "auto";
-  }
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "The Storybook Haven",
+  "url": "https://www.thestorybookhaven.be/",
+  "description": "Imaginative, at-home English storytelling sessions that build language, joy, and confidence for children in Flanders.",
+  "image": "https://www.thestorybookhaven.be/social-preview.png",
+  "logo": "https://www.thestorybookhaven.be/favicon.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Tienen",
+    "addressRegion": "Flanders",
+    "addressCountry": "BE"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Flanders"
+  },
+  "openingHours": "By appointment",
+  "priceRange": "€€",
+  "email": "info@thestorybookhaven.be",   
+  "sameAs": [
+  ]
 }
-
-          const list = bottom.querySelector("ul");
-          if (list) {
-            list.style.flexGrow = "1";
-            list.style.display = "flex";
-            list.style.flexDirection = "column";
-
-            const items = list.querySelectorAll("li");
-            items.forEach(function (li) {
-              li.style.marginTop = "0";
-              li.style.marginBottom = "0";
-            });
-
-            const isBlue = card.querySelector(".text-blue-600") !== null;
-
-            if (isBlue) {
-              list.style.justifyContent = "space-between";
-              list.style.gap = "3rem";
-            } else {
-              list.style.justifyContent = "space-between";
-              list.style.gap = "1.8rem";
-            }
-          }
-        });
-      });
-    </script>
-
-    <!-- 🔹 SMALL EXTRA CARD CSS -->
-   <style>
-  .bg-white.rounded-2xl.shadow-lg {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  .bg-white.rounded-2xl.shadow-lg .p-8:last-of-type {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  .bg-white.rounded-2xl.shadow-lg .p-8:last-of-type > button.w-full {
-    margin-top: auto;
-  }
-</style>
-
+</script>
+    <script type="module" crossorigin src="./assets/index-0J2l9lzr.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DDZsD24m.css">
   </head>
   <body>
     <div id="root"></div>
